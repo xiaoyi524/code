@@ -1,0 +1,532 @@
+=========================================================
+----->  FileName:java base code words						
+----->  CreateDate:2022/10/29 12:32 Saturday				
+----->  Email:804433322@qq.com								
+----->  GITEE:https://gitee.com/lixiaoyi147/code.git		
+----->  GITHUB:https://github.com/xiaoyi524/code.git
+----->  TheEditor:Notepad++	
+----->	instructions:使用Notepad++全屏查看效果最佳
+=========================================================
+
+【基础数据类型】
+
+int								整数
+short								短整数
+long								长整数
+float								单精度
+double								双精度
+byte								字节
+char								字符
+boolean								布尔
+String								字符串，不属于基本数据类型
+
+【基本数据包装类型】
+Integer								整数
+Short								短整数
+Long								长整数
+Float								单精度
+Double								双精度
+Byte								字节
+Character								字符
+Boolean								布尔
+
+【判断语句】
+if								if判断语句
+else								else否则
+
+switch								switch分支判断语句
+case								分支
+break								停止，中断分支
+default								switch分支不满足，否则语句
+
+【循环语句】
+for								for循环
+foreach								增强for循环
+while								while循环
+do...while								do...while循环，先执行1次
+continue								终止当前1次循环
+break								退出整个循环
+
+【package创建导入】
+package								创建包名，如:package com.test.demo;
+import								导入包，如:import com.test.demo;
+
+【抽象/接口/修饰符】
+abstract								抽象修饰符，定义:class方法上
+extends								继承修饰符，定义:class方法上
+
+interface								接口修饰符,注意事项：方法可不写public
+implement							继承接口修饰符,[注意事项：需要实现接口方法]
+
+public								公共修饰符，无限制
+private								私有修饰符，只允许类内访问
+protected								受保护修饰符，只允许子父类访问
+
+this								当前对象
+super								父类对象
+
+final								常量，不可修改
+void								方法修饰符
+static								静态修饰符
+return								终止方法，注意事项：该修饰符可终止方法执行，同样可返回数据
+Class								字节文件
+new								创建
+
+@Override							重写注释
+
+【Object类】
+Object								所有类的父类
+objects								Object子类，静态
+equals								比较两个数据是否相同,安全，参数1:比较对象,参数2:比较对象，返回:boolean
+
+【Scanner扫描器,对象】
+Scanner								扫描器，用于控制柜输入,如:Scanner scanner = new Scanner(System.in);
+nextLine								输入一行，需要Scanner对象调用，返回:String
+nextInt								输入整数类型，返回:int，注意事项:如果输入的不是整数，则会报错
+[以上是常用,如果需要其它可next后查看有哪些方法]
+
+【Random随机数,对象】
+Random 								随机数
+nextInt								获得随机数，参数:取值范围[int]，返回:int，需要Random对象调用，如:Random.nextInt(50);，将会在50内随机取一位数字
+[以上是常用,如果需要其它可next后查看有哪些方法]
+
+【其它常用】
+hashCode							获得方法哈希值地址，返回:int，注意事项：暂时不用记，了解即可
+toHexString							十六进制转字符串，参数:int，返回:String，如:Integer.toHexString(16进制作数据);，注意事项：暂时不用记，了解即可
+getClass								获得字节码文件
+finalize								垃圾回收器，注意事项：暂时不用记，了解即可
+
+【异常】
+try								异常头
+catch								抓取异常
+throws								抛出
+finally								最后执行
+
+Exception								所有异常的父类
+ArithmeticException						运算异常
+ArrayIndexOutOfBoundsException					数组越界异常
+IoException							IO流异常
+FileNotFoundException						io流文件拒绝访问异常
+RuntimeException							运行时异常
+[以上异常了解即可，Exception异常需要记住]
+
+printStackTrace							打印异常所有详细信息，需要异常对象调用
+getMessage							获得异常消息，返回:String，需要异常对象调用
+toString								打印异常信息，需要异常对象调用
+
+【枚举】
+enum								枚举,定义常量的
+如:
+encum status{NAME,AGE,EMAIL}
+
+【Arrays数组】
+Arrays 								数组对象，静态
+sort								数组排序，参数1:数组,参数2[可不填]:排序方法
+binarySearch							数组搜索，参数1:搜索,参数2:key，返回:int[搜索的索引,搜索失败返回-1]
+abList								数组转为List集合，参数1:数组，返回:List<T>
+
+Comparator							自定义数组排序,配合sort的第2个参数使用，参数:引用类型，返回:int[左边>右边返回正整数，右边>左边返回负整数，左边=右边返回0]
+compare								Comparator需要重写compre接口方法
+
+【日期时间】
+Date								获得当前日期时间Date对象，如:Date date = new Date();
+SimpleDateFormat							解析日期时间对象，参数1[可不填]:String[日期格式化]，如:y=年,M=月,d=日,H=时,m=分,s=秒
+format								解析日期，参数1:Date，返回:String[日期]
+
+【新增时间API】
+LocalDate								日期对象
+LocalTime							时间对象
+LocalDateTime							日期时间对象
+Instant								时间戳对象
+DateTimeFormatter							日期与时间格式化对象
+Duration								时间间隔对象
+period								日期相隔对象
+ChronoUnit							比较全时间对象
+
+【String字符串,对象】
+String								字符串对象
+
+length								获取字符串长度，返回:int
+startsWith							判断字符串是否以指定的前缀结尾，参数1:String[前缀字符]，返回:boolean
+wndsWith							判断字符串是否以指定的后缀结尾，参数1:String[后缀字符]，返回:boolean
+equalsIgonreCase							判断两个字符串忽略大小写是否相等，参数1:String，返回:boolean
+isEmpty								判断一个字符串是否为空串，返回:boolean
+charAt								返回 char指定索引处的值，参数1:int
+indexOf								返回指定子字符串出现的字符串中的索引，参数1:String[查找的字符],参数2[可不填]:开始查找索引，返回:int[找到的索引，找不到返回-1]
+lastIndexof							返回指定子字符串右边出现的字符串中的索引，参数1:String[查找的字符],参数2[可不填]:开始查找索引，返回:int[找到的索引，找不到返回-1]
+substring								截取字符串，参数1:int[开始索引],参数2[可不填]:int[结束索引]，返回:String
+getBytes								获得字符串的字节数组，参数1:String，返回:byte[]
+toCharArray							将此字符串转换为新的字符数组，返回:char[]
+valueOf								将某个数据转为字符串，参数1:object，返回:String
+toUpperCase							把字符串的小写字母全部转为大写字母，返回:String
+toLowerCase							把字符串的大写字母全部转为小写字母，返回:String
+concat								拼接字符串，参数1:String，返回:String
+compare								比较整数大小，参数1:int，返回:int[左边>右边返回正整数，右边>左边返回负整数，左边=右边返回0]
+compareTo							按字典顺序比较两个字符串，参数1:String，返回:int[左边>右边返回正整数，右边>左边返回负整数，左边=右边返回0]
+split								分割字符串，参数1:String[分割字符],参数2[可不填]:int[分割数量]，返回:String[]
+reolace								替换字符串，参数1:String[被替换的字符],参数2:String[替换的字符],返回:String
+trim								删除两边空格字符，返回:String
+
+matches								正则表达，参数1:String[正则表达式]，返回:boolean
+
+【正则表达】
+pattern								正则匹配对象类
+matches								正则匹配，参数:String[正则表达式]，返回:boolean
+
+匹配字符定义类
+
+字符类
+[abc]		只能a，b，或c
+[^abc]		除了a，b，c之外的任何字符
+[a-zA-Z]		a到z A到Z 包括范围
+[a-d[m-p]		a到d，或m通过p：([a-dm-p]联合)
+[a-z&&[def]]	d，e，或f（交集)
+[a-z&&[^bc]]	a到z，除了b和c：（[ad-z]减法）
+[a-z&&[^m-p]]	a到z，除了m和p：（[a-|q-z]减法）
+
+
+预定义字符类
+.		任何字符
+\d		一份数字：【0-9】
+\D		非数字：【^0-9】
+\s		一个空白字符【\t\n\x0B\f\r】
+\S		非空白字符：【^\S】
+\w		【a-zA-Z_0-9】英文、数字、下划线
+\W		【^\w】一个非单词字符
+
+贪婪的量词
+X?		X,一次或根本不
+X*		X,零次或多次
+X+		X,一次或多次
+X{n}		X，正好多次
+X{n,}		X，至少N次
+X{n,m}		X，至少n但不超过M次
+
+
+【StringBuffer可变字符串,对象】
+StringBuffer							StringBuffer可变字符串对象
+capacity								返回当前容量，返回:int
+append								追加字符，参数1:Object类，返回:StringBuffer
+insert								插入字符，参数1:int[插入位置],参数2:object类[插入数据]，返回:StringBuffer
+delete								删除此序列的子字符串中的字符，参数1:int[开始索引],参数2:int[结束索引]，返回:StringBuffer
+deleteCharAt							删除char在这个序列中的指定位置，参数1:int[索引]，返回:StringBuffer
+reverse								把字符倒转，返回:StringBuffer
+
+【StringBuilder可变字符序列,对象】
+StringBuilder							StringBuilder对象
+append											
+reverse								把字符倒转，返回:StringBuilder								追加字符，参数1:Object类，返回:StringBuilder
+length								获取字符串长度，返回:int
+toString								把StringBuilder转为String，返回:String
+
+【System类】
+System								System类,静态
+arraycopy								复制数组，参数1:Object[原数组],参数2:int[原数组开始索引],参数3:Object[目标数组],参数4:int[目标数组开始索引],参数5:int[目标数组结束索引]
+currenTimeMillis							获取当前系统时间(以毫秒为单位)，返回:long
+exit								终止虚拟机，参数1:int
+gc								运行垃圾回收器
+getProperties							获得系统属性，参数1[可不填]:String[系统属性key],参数2[可不填]:String[系统属性def]
+
+【Collection集合,对象】
+Collection							Collection集合,所有集合的父类
+
+List								有序集合,Collection的子类
+ArrayList								有序集合,按照添加排序,List的子类
+LinkedList							有序集合,LinkedList集合数据存储的是链表结构
+[List常用集合]
+
+set								无重复集合,Collection的子类
+HashSet								无须不重复集合,set的子类
+LinkedHashSet							有序不重复集合,set的子类
+TreeSet								有序自定义集合,set的子类
+
+Vector								线程安全集合
+
+
+【ArrayList有序集合,对象】
+ArrayList<T>							ArrayList集合,有序集合
+add								添加，参数1:<T>，返回:boolean
+addAll								把一个集合复制到另一个集合，参数:Collection<T>
+clear								清空集合
+remove								删除该列表中指定位置的元素，参数1:object或int[删除索引]，返回:boolean或<E>
+removeAll							删除指定集合中包含的所有元素，参数1:Collection<T>，返回:boolean
+contains								判断集合中是否存在某个元素，参数1:object，返回:boolean
+containsAll							判断集合中是否存在某个集合，参数1:Collection<T>，返回:boolean
+isEmpty								判断集合是否为空，返回:boolean
+toArray								把集合转为数组，返回:object[]
+size								获得集合长度,返回:int
+get								根据索引获取元素，参数1:int，返回:<E>
+
+【LinkedList有序链表集合,对象】
+LinkedList<T>							LinkedList集合,有序链表集合
+addFirst								开头插入指定的元素，参数1:<E>
+addLast								末尾插入指定的元素，参数1:<E>
+removeFirst							删除集合第一个元素并返回此元素，返回:<E>
+removeLast							删除集合最后一个元素并返回此元素，返回:<E>
+removeFirstOccurrence						删除开头指定元素，参数1:<E>，返回:boolean
+removeLastOccurrence						删除尾部指定元素，参数1:<E>，返回:boolean
+pop								出栈,获得集合第一个元素，返回<E>
+push								压栈,将元素推送到由此列表表示的堆栈上，参数1:<E>
+
+
+
+【Collections集合工具类】
+Collections							Collection工具类集合,静态
+remove								反转集合，参数1:List<T>
+shuffle								把集合顺序打乱，参数1:List<T>
+Comparable							自定义排序集合接口
+synchronizedCollection						把集合转为线程安全集合，参数1:List<E>
+
+
+
+
+【迭代器】
+Iterator								迭代器对象,通过集合等获取迭代器
+hasNext								遍历迭代器,是否存在元素，返回:boolean
+next								获得元素，返回:<E>
+
+
+【Map键值对】
+Map<K,V>							键值对集合,无须集合,key不能重复,所有Map的父类
+
+HashTable<K,V>							底层是哈希表数据结构，不允许存入null键null值，该集合是线程同步的，Map的子类
+HashMap<K,V>							层是哈希表数据结构，允许存入null键null值，该集合是线程不同步的，Map的子类
+TreeMap<K,V>							底层是二叉树数据结构，线程不同步，可用于给Map集合中的键进行排序,需要实现Comparable接口进行排序，Map的子类
+LinkedHashMap<K,V>						按照添加排序,不是线程安全,允许多个null键和null值,Map的子类
+
+put								添加元素,参数1:key<E>,参数2:value<V>，返回:<E>
+putAll								把Map复制到另一个Map，参数:Map<K,V>
+clear								清空Map
+remove								根据key值删除指定元素,参数:key<K>，返回:<V>
+get								获取Key对应值的内容,参数:key<E>，返回:<V>
+KeySet								返回所有key的集合,返回:set<K>
+containsKey							判断Map是否存在该Key，参数:ket<K>，返回:boolean
+containsValue							判断Map是否存在Value，参数:value<V>，返回:boolean
+isEmpty								判断Map是否为空，返回:boolean
+entrySet								遍历Map内容，返回:Set<Map.Entry<K,V>>
+
+
+【File文件类,对象】
+File								File文件对象
+createNewFile							创建文件,需要File对象调用，返回:boolean
+mkdir								创建目录,必须有上一层路径,需要File对象调用，返回:boolean
+mkdirs								创建多级目录,需要File对象调用，返回:boolean
+delete								删除文件,需要File对象调用，返回:boolean
+
+getAbsolutePath							获得文件绝对路径，返回:String
+getPath								获得当前文件对象路径，返回:String
+getName								获得文件名，返回:String
+length								获得文件字节大小，返回:long
+lastModified							获得文件最后修改时间，返回:long
+
+
+listRoots								获取电脑磁盘的根目录，返回:File[],静态
+listFiles								获得文件夹的子文件，参数[可不填]:FileFileter对象，返回:File[]
+list								获得子文件名字，参数[可不填]:FileennameFilter对象，返回:String[]
+
+exists								判断文件是否存在，返回:boolean
+isFile								判断是否为文件，返回:boolean
+isDirectory							判断是否为目录，返回:boolean
+isAbsolute							判断路径是否为绝对路径，返回:boolean
+canRead								判断文件是否可读，返回:boolean
+canWrite								判断文件是否可写，返回:boolean
+isHidden								判断文件是否隐藏，返回:boolean
+[需要File对象调用]
+
+
+【字符输出流】
+Writer								字符输出流
+FileWriter								文件字符输出流
+BufferedWriter							高效缓冲字符输出流
+PrintWriter							打印输出流
+OutputStreamWriter						字节输出流转换成字符输入流
+
+
+write								写出数据
+flush								刷新流
+close								关闭流
+print								输出数据(仅限于PrintWriter)
+println								换行输出数据(仅限于PrintWriter)
+newLine								换行输出(仅限于BufferedWriter)
+[需要Writer对象调用]
+
+【字符输入流】
+Reader								字符输入流
+FileWriter								文件字符输入流
+BufferedReader							高效缓冲字符输入流
+InputStreamReader							字节输入流转换字符输入流
+
+read								读取1个字符
+readLine								读取1行字符(仅限于BufferedReader)
+
+【字节输出流】
+OutputStream							字节输出流
+FileOutputStream							文件字节输出流
+BufferedOutputStream						高效缓冲字节输出流
+
+【字节输入流】
+InputStream							字节输入流
+FileInputStream							文件字节输入流
+BufferedInputStream						高效缓冲字节输入流
+
+
+
+
+【对象字节输出/输入流】
+ObjectOutputStream						对象字节输出流，需要序列化:Serializable接口,重写:serialVersionUID,如:  private static final long serialVersionUID = -5748724137940915186L;
+ObjectInputStream							对象字节输入流，需要序列化:Serializable接口,重写:serialVersionUID,如:  private static final long serialVersionUID = -5748724137940915186L;
+
+Serializable							序列化接口
+serialVersionUID							反序列化,如:private static final long serialVersionUID = -5748724137940915186L;
+
+transient								用于对象流序列化，修饰符，不参与序列化，如：private transient String name；
+
+wirte...								写出对象数据,...为对象类型
+readObject							读取对象
+
+
+【Properties类,对象】
+properties							properties对象
+
+setProperty							储存键值数据，参数1:String[key],参数2:String[value]
+getProperty							获取键值数据，参数1:String[key]，返回：String[value]
+list								将此属性列表打印到指定的输出流PrintWrite，参数:PrintWriter对象
+load								读取文件内的键值，参数:Reader或InputStream对象
+store								将此属性列表（键和元素对）写入此 Properties表中，参数1:Writer或OutputStream对象,参数2:String[注释内容]
+
+
+【Thread线程,对象】
+Thread								Thread对象
+Runnable								线程接口
+
+Callable								线程接口，JDK5.0新特性，可获得返回值，结合FutureTak完成
+FutureTask							线程接口，JDK5.0新特性，可获得返回值
+
+
+run								线程方法,需要继承Thread或Runnable重写该方法
+start								启动线程
+synchroized							锁对象，lock获得锁，unlock释放锁
+sleep								休眠时间，参数:long(毫秒)，静态
+currenThread							获取当前线程对象，静态
+getName								获得线程名称，返回:String
+join								等待这个线程死亡，参数[可不填]:long(毫秒)
+yield								让出线程,代码放在继承的Thread的run方法里面,如:Thread.yield
+setDaemon							守护线程，参数:boolean，注意事项:如果填写参数为true后，主线程结束，那么子线程也跟着结束
+
+
+wait								线程等待的状态  Object的方法，需要在同步代码块内使用，如:OBject.wait()
+notify								通知这个共享对象上等待的线程，如:OBject.motify()
+
+【线程池】
+代表线程池：
+ExecutorService
+
+ThreadPoolExecutor		五个参数
+参数一：指定线程池的线程数量(核心线程)：corePoolSized	不能小于0
+参数二：指定线程池可支持的最大线程数：maximumPoolSized	最大数量>=核心线程数量
+参数三：指定临时线程的最大存活时间：keepAliveTime		不能小于0
+参数四：指定存活时间的单位（秒、分、时、天）：unit		时间单位
+参数五：指定任务队列：workQueue			不能为null
+参数六：指定用哪个线程工厂创建线程：threadFactory		不能为null
+参数七：指定线程忙，任务满的时候，新任务来了怎么办：handler	不能为null
+
+
+shutdownNow							立即关闭线程池
+shutdown							等待任务完成，关闭线程池
+
+
+
+【Stream流,对象】
+Stream								Stream对象
+
+limit								获取前几个元素，参数:long，返回:Stream<T>
+filter								用于对流中进行过滤，参数:Predicate<? super T> predicate，返回:Stream<T>
+skip								跳过前面几个元素，参数:long，返回：Stream<T>
+distinct								去除流中重复元，返回：Stream<T>
+concat								合并流数据，参数:Stream<? extends T> a, Stream<? extends T> b，返回:Stream<T>
+[需要Stream对象调用]
+
+
+【InetAddress网络编程,对象】
+InetAddress							InetAddress对象
+
+getLocalHost							返回本地主机的地址，返回:InetAddress对象
+getHostAddress							返回文本显示中的IP地址字符串。,返回:String
+getHostName							获取此IP地址的主机名，返回:String
+getByName							获得远程主机IP地址，参数:String(ip地址)，返回:InetAddress对象
+[需要InetAddress对象调用]
+
+
+【UDP通信】
+DatagramSocket							数据报套接字对象，参数1[可不填]:int(端口),参数2:InetAddress对象
+receive								从此套接字接收数据报包，参数:Datagrampacket对象
+send								从此套接字发送数据报包，参数:Datagrampacket对象
+
+
+Datagrampacket							接收或发送数据包对象，参数1:byte[字节数据数组],参数2:int(包长度),参数3:InetAddress对象,参数4:int(端口)
+getAddress							返回该数据报发送或接收数据报的计算机的IP地址，返回:InetAddress对象
+getData								返回数据缓冲区，返回:Byte[]
+getLength							返回要发送的数据的长度或接收到的数据的长度，返回:int
+
+【TCP通信】
+ServerSocket							ServeSocket对象,服务端，参数1[可不填]:int(端口)
+accpet								监听并获得客户端的对象，返回:socket对象
+[需要ServerSocket对象调用]
+
+Socket								Socket对象,客户端,可无参构造器，参数1:InetAddress对象,参数2:int(端口)
+getInputStream							返回此套接字的输入流，返回:InputStream对象
+[需要Socket对象调用]
+
+
+【URL网络】
+URL								URL对象，参数:String(URL地址)
+getProtocol							获取此URL的协议名称，返回:String
+getHost								获取此URL的主机名，返回:String
+getPort								获取此 URL的端口号，返回:int
+getPath								获取此 URL的路径部分，返回:String
+getFile								获取此 URL的文件名，返回:String
+getQuery								获取此 URL的查询部分，返回:String
+openConnection							打开连接，返回:URLConnection (强转HttpURLConnection)
+[需要URL对象调用]
+
+HttpURLConnection						HttpURLConnection对象
+getInputStream							返回从此打开的连接读取的输入流，返回:InputStream对象
+disconnection							断开连接
+[需要URLConnection调用]
+
+
+【日记记录】
+Logger								Logger日志对象，如:public static final Logger LOGGER = LoggerFactory.getLogger("文件.class");
+
+LoggerFactory							LoggerFactory日志对象
+getLogger							返回Logger对象,调用LoggerFactory对象，参数:class文件
+debug								记录日志，参数:String
+info								记录日志，参数：String
+error								记录日志错误，参数:String
+日志级别: TRACE<DEBUG<INGO<WARN<ERROR				默认debug，忽如大小写
+
+
+【XML】
+
+XML解析:Dom解析
+
+XML单词代表意思
+
+Document对象：整个xml对象
+Element对象：标签
+Attribute对象：属性
+Text对象：文本内容
+
+【XML格式】
+
+<?xml version="1.0" encoding="utf-8" ?>		声明
+version			版本号
+encoding			解码编号
+
+
+特殊字符
+＆lt;		< 小于
+&gt;		>大于
+&amp；		&和号
+&apos；		'单引号
+&quot;		“引号
