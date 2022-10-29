@@ -1,0 +1,7 @@
+color			属性定义文本的颜色
+text-align			属性设置文本内容的水平对齐方式	left 左对齐	  right  右对齐  center  居中对齐
+text-decoration		属性规定装饰文本，给文本添加下划线、删除线、上划线等
+	none 默认，没有装饰线  underline 下划线  overline  上划线  line-through  删除线
+
+text-indent		属性用来指定文本的第一行的缩进。通常是将段落的首行缩进。  px 长度  em 相对单位的1个文字大小
+line-height		属性用于设置行间的行高

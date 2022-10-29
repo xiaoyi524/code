@@ -1,0 +1,3 @@
+display:block;		把行元素转换为块元素
+display:inline;		把块元素转换为行元素
+display:inline-block;		转为为行内块元素

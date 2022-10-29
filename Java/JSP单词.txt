@@ -1,0 +1,68 @@
+【JSP快速入门】
+1.导入JSP坐标
+<dependency>
+	<groupld>javax.servlet.jsp</groupld>
+	<artifactid>jsp-api</artifactid>
+	<version>2.2</version>
+	<scope>provided</scope>
+</dependency>
+2.创建JSP文件
+3.编写HTML标签和Java代码
+
+【JSP脚本分类】
+1.<%...%>		内容会直接放到_jspService()方法之中
+2.<%=...%>	内容会放到out.print()中，作为out.print()的参数
+3.<%!...%>	内容会放到_jspService()方法之外,被类直接包含
+
+【EL表达式】
+主要功能：获取数据
+语法:${expressopm}		获取域中储存的key为brands的数据，通过Servlet的Request对象转发
+
+
+
+【JSTL标签】
+JSTL快速入门
+1.导入坐标
+<dependency>
+	<groupld>jstl</groupld>
+	<artifactld>jstl</artifactld>
+	<version>1.2</version>
+</dependency>
+<dependency>
+	<groupld>taglibs</groupld>
+	<artifactld>standard</artifactld>
+	<version>1.1.2</version>
+</dependency>
+
+2.在JSP页面上引入JSTL标签库
+如:<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+3.使用
+如:<c:if>
+
+
+【JSTL常用标签】
+if判断：
+<c:if test = "${age}==1">禁用<c:if>
+
+forEach循环，相当于for循环：
+items		被遍历的容器
+var		遍历产生的临时变量
+varStatus		遍历状态对象，属性:index:从0开始,count:从1开始
+<c:forEach items="${brands}" var = "brand">
+	<tr align="center">
+		<td>${brand.id}</td>
+		<td>${brand.banrdName}</td>
+		<td>${brand.companyName}</td>
+		<td>${brand.description}</td>
+</tr>
+</c:forEach>
+
+普通for循环
+begin		开始数
+end		结束数
+step		步长
+如：
+<c:forEach begin="0" end="10" step="1" var = "i">
+${i}
+</c:forEach>

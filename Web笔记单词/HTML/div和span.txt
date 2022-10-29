@@ -1,0 +1,8 @@
+div和span标签  这两个标签没有语义，它们就是一个盒子，用来装内容
+
+div
+
+<div>这是头部</div>
+
+span
+<span>今日价格<span>

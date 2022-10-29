@@ -1,0 +1,157 @@
+Servlet方法介绍
+init					初始化方法，在Servlet被创建时执行，只执行一次
+service					提供服务方法，每次Servlet被访问，都会调用该方法
+destroy					销毁方法，当Servlet被销毁时，调用该方法，服务器关闭调用该方法
+getServletConfig				获取ServletConfig对象
+getServletInfo				获取Servlet信息
+
+服务器配置
+Servlet					Servlet接口，需要继承接口来实现
+provided					Servlet依赖包，Maven依赖，3.1.0版本，javax.servlet-api
+@WebServlet				标记访问路径，如:webServlet("admin");,写在class方法上面
+
+Servlet重构方法
+init					初始化方法
+初始化方法
+1.调用时机：默认情况下，Servlet被第一次访问时，调用
+		loadOnstartup属性，如:WebServlet(urlPatterns="/demo2",loadOnstartup=1);
+2.调用次数：1次
+
+service					提供服务方法
+提供服务方法
+1.调用时机：每一次Servlet被调用访问时，调用
+2.调用次数：每一次Servlet被调用访问时，调用
+
+destroy					销毁方法
+销毁方法
+1.调用时机：内存释放或者服务器关闭的时候，Servlet对象会被销毁，调用
+2.调用次数：1次
+
+HttpServlet
+
+HttpServlet				HttpServlet继承了Servlet接口，重写doGet和doPost方法
+getMethod				获取求情方法，如：post、get
+
+---------------------------------------------------------------------------------------------
+Request					获取请求数据对象
+Response					设置响应数据对象
+
+Request继承体系
+ServletRequest				Java提供的请求对象根接口
+HttpServletRequest				Java提供的对Http协议封装的请求对象接口
+RequestFacade				Tomcat定义的实现类
+
+---------------------------------------------------------------------------------------------
+
+Request获取请求数据
+【1】请求行：GET/request-demo/req1?username=admin HTTP/1.1
+
+getMethod		获取请求方式:GET，POST	返回：String
+getContextPath		获取虚拟目录(项目访问路径):/request-demo 返回:String
+getRequestURL		获取URL(统一资源定位符):http://localhost:8080/request-demo/req1 返回StringBuffer
+getRequestURI		获取URI(统一资源标识符):/request-demo/req1 返回:String
+getQueryString		获取请求参数(GET方式):username=admin&pass=123
+
+【2】请求头：User-Agent：Mozilla/5.0 Chrome/91.0.4472.106
+
+getHeader		根据请求头名称，获取值	返回:String
+名称:user-agent 浏览器版本信息；
+
+【3】请求体：username=admin&password=123
+getInputStream		获取字节输入流	返回:ServletInputStream
+getReader			获取字符输入流	返回:BufferedReader
+
+【通用获取请求参数】
+getParameterMap				获取所有参数Map集合  返回:Map<String,String[]>
+getParameterValues				根据名称获取参数值[数组]  返回:String[]
+getParameter				根据名称获取参数值(单个值)  返回:String
+【设置输入流编码】
+setCharacterEncoding			设置字符输入流的编码，限于POST方法
+
+URLEncoder			URL编码
+encode				编码，如:URLEncoder.encode("张三","UFT-8");
+
+URLDecoder			URL解码，TomCat默认编码:ISO-8859-1
+decode				解码，如:URLDecode(被解码数据,"UFT-8");
+
+【4】Request请求转发
+实现方式：Request对象.getRequestDispatcher("资源B路径").forward(Request对象,Response对象);
+
+请求转发数据资源间共享数据
+setAttribute		储存数据到Request域中
+getAttribute		根据key，获取值
+removeAttribute		根据key，删除键值对
+
+---------------------------------------------------------------------------------------------
+Response设置响应数据
+【子类】
+ServletResponse			Java提供的请求对象根接口
+HttpServletResponse			Java提供的对Http协议封装的请求对象
+ResponseFacade			Tomcat定义的实现类
+
+【1.设置响应数据】
+setStatus				响应行，设置响应状态码
+
+setHeader				响应头，设置响应头键值对
+如:Response.setHeader("content-type","text/html");
+简化响应头，解决编码:
+Response对象.setContentType("text/html;charset=utf-8")
+
+getWriter				响应体，获取字符输出流
+getOutputStream			响应体，获取字节输出流
+
+【2.Response完成重定向】
+Response对象.setStatus(302);		设置响应状态码
+Response对象,setHeader("location","资源B路径");
+简化方式完成重定向
+Response对象.sendRedirect("虚拟目录资源B路径");
+
+---------------------------------------------------------------------------------------------
+【Filter过滤器快速入门】
+1）.定义类，实现Filter接口，并重写其所有方法
+如：
+public class FilterDemo implement Filter{
+
+	public void init(FilterConfig filterConfig)//初始化
+	public void doFilter(ServletRequest request)//阻拦
+	public void destroy(){}//销毁
+}
+
+2).配置Filter拦截资源的路径，在类上定义WebFilter注解:
+如:
+@WebFilter("/*")
+public class FilterDemo implement Filter{}
+
+3).在doFilter方法中输出一句话，并放行
+如:
+public void doFilter(ServletRequest request,ServletResponse response){
+	System.out.println("Filter被执行了...");
+	chain.doFilter(request.response);
+}
+
+------------------------------------------------------------------
+【Axios快速入门】
+1）引入axios的js文件
+如:
+<script src="js/axios-0.18.0.js"></script>
+
+2)使用axios发送请求，并获取响应结果
+如:
+
+---------------------------------------------------------------------
+axios({
+	method:"get",
+	url:"http://localhost:8080/ajax-demo1/aJAXDemo1?userName=zhangsan"}
+).then(function (resp){
+	alert(resp.data);
+
+} )
+
+---------------------------------------------------------------------
+axios({
+	method:"post",
+	url:"http://localhost:8080/ajax-demo1/aJAXDemo1",
+	data:"username=zhangsan"
+}).then(function(resp){
+	alert(resp.data);
+})

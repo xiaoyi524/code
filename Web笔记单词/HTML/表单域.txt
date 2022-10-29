@@ -1,0 +1,15 @@
+form     定义表单域
+<form>     把它范围内的表单元素信息提交给服务器
+
+form值
+
+action     用于指定介绍并处理表单数据的服务器程序的url地址
+值:url地址
+
+method     用于设置表单数据提交方式,其取值为get或post
+值:get/post
+
+name     用于指定表单的名称,以区分同一个页面多个表单域
+值:名称
+
+如:<form action="url地址" method="提交方式" name"表单域名称"><form>

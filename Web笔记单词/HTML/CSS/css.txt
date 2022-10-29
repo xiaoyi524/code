@@ -1,0 +1,3 @@
+style     CSS块区  需要写在head块区内
+
+background-color     设置背景颜色

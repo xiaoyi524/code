@@ -1,0 +1,9 @@
+内行引入
+
+<p style="color:red; ">Hello Word</p>
+
+外部引入
+
+<link>		标签
+
+<link rel="stylesheet" href="css文件路径">

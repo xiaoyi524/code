@@ -1,0 +1,47 @@
+【Filter快速入门】
+1）.定义类，实现Filter接口，并重写其所有方法
+如：
+public class FilterDemo implement Filter{
+
+	public void init(FilterConfig filterConfig)//初始化
+	public void doFilter(ServletRequest request)//阻拦
+	public void destroy(){}//销毁
+}
+
+2).配置Filter拦截资源的路径，在类上定义WebFilter注解:
+如:
+@WebFilter("/*")
+public class FilterDemo implement Filter{}
+
+3).在doFilter方法中输出一句话，并放行
+如:
+public void doFilter(ServletRequest request,ServletResponse response){
+	System.out.println("Filter被执行了...");
+	chain.doFilter(request.response);
+}
+---------------------------------------------------------------------
+【Axios快速入门】
+1）引入axios的js文件
+如:
+<script src="js/axios-0.18.0.js"></script>
+
+2)使用axios发送请求，并获取响应结果
+如:
+
+---------------------------------------------------------------------
+axios({
+	method:"get",
+	url:"http://localhost:8080/ajax-demo1/aJAXDemo1?userName=zhangsan"}
+).then(function (resp){
+	alert(resp.data);
+
+} )
+
+---------------------------------------------------------------------
+axios({
+	method:"post",
+	url:"http://localhost:8080/ajax-demo1/aJAXDemo1",
+	data:"username=zhangsan"
+}).then(function(resp){
+	alert(resp.data);
+})

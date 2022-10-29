@@ -1,0 +1,114 @@
+script			引入JavaScript标签，内部，外部引入:<script src="路径"></script>
+
+JavaScript基础输出语句
+window.alert()			写入警告框
+document.write()			写入HTML输出
+console.log()			写出浏览器控制台
+
+变量
+var				变量，可以储存不同类型的值，不能数字开头
+let				变量，只在代码块内有效，不允许重复声明
+const				变量，只读的常量，一但声明，常量不能改变值
+
+数据类型
+number				数字(整数，小数，NaN(Not a Number))
+string				字符，字符串，单双引
+boolean				布尔。true，false
+null				对象为空
+undefined			当声明的变量未初始化，该变量的默认值是undefined
+typeof				typeof运算符可以获取数据，如：alert(typeof age);
+
+parseInt				字符串转数字类型
+
+函数
+function				函数方法关键词
+如:function test(参数1 ，参数2){}；
+
+
+数组
+Array数组
+Array				数组对象，var arr = new Array(1,2,3);var arr = [1,2,3];
+				注意:JS数组类似List的Java集合，长度，类型都可变
+length				数组中的元素个数
+push				推，添加元素
+splice				删除元素，2个参数:1从哪里开始删,2.删除几个
+
+string数组
+string				string数组,如:var a = new String("test");
+length				字符串长度
+indexOf				检索字符
+trim				去除字符串两端空白字符
+test				正则表达式
+
+自定义对象
+如:  var a = {
+        name: "张三",
+        age: 18,
+        test: function () {
+          alert("test")
+        }
+    }
+
+
+BOM对象
+
+window				浏览器窗口对象
+Navigator			浏览器对象
+Screen				屏幕对象
+History				历史记录对象
+Location				地址栏对象
+
+属性：获取其它的BOM对象
+history				对History对象的制度引用，请数考History对象
+Navigator			对Navigator对象的只读引用，请数考Navigtor对象
+Screen				对Screen对象的只读引用，请参数Screen对象
+location				用于窗口或框架的Location对象，请参数Location
+
+
+window对象
+方法:
+window
+alert				显示带有一段消息和一个确认按钮的警告框。
+confirm				显示待有一段消息以及确认按钮和取消按钮的对话框，返回值boolean
+setInterval			按照只读的周期(以毫秒计)来调用函数或计算表达式，循环执行
+setTimeout			在指定的毫秒数后调用函数或计算表达式，只执行一次
+
+History				History历史记录对象
+方法:
+back				加载history列表中的前一个URL
+forward				加载history列表中的下一个URL
+
+Location				地址栏对象
+href				设置或返回完整的URL
+如:window.location 方法(); 或 location 方法();
+
+DOM					文档对象，将标记语言的各个组成封装位
+
+Document				整个文档对象
+Element					元素对象
+Attribute					属性对象
+Text					文本对象
+Comment					注释对象
+
+Element元素对象
+innerHTML				设置元素内容
+属性:
+getElementById				根据id属性值获取，返回一个Element对象
+getElementByTagName			根据标签名称获取，返回Element对象数组
+getElementByName			根据name属性值获取，返回Element对象数组
+getElementByCalssName			根据Class属性值获取，返回Element对象数组
+
+事件监听
+onclick					鼠标点击绑定，
+如:【1】<input type="button" onclick="事件函数()">
+【2】<input type="button" id="bin">
+document.getElementById("bin").onclick = function(){alert("test") }
+
+onclick					鼠标点击事件
+onblur					元素失去焦点
+onfocus					元素获得焦点
+onload					某个页面或图像被完全加载
+onsumit					当前表单提交是触发该事件
+onkeydown				某个键盘的键被按下
+onmouseover				鼠标被移带某个元素之上
+onmouseout				鼠标从元素移开

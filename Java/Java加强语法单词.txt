@@ -1,0 +1,56 @@
+MVN命令
+mvn compile		下载jar包
+mvn clean			删除目录
+mvn package		打包jar包
+mvn test			测试
+mvn install		安装jar包
+------------------------------------------------
+DriverManager	驱动管理类
+
+DriverManager.getConnection(参数1:,参数2,参数3)		返回参数:Connection类
+参数1：数据库连接地址 如：“jdbc.mysql://IP地址:端口号/数据库名称？参数健值对”
+参数2：数据库登录用户名
+参数3：数据库登录密码
+
+-------------------------------
+Connection	数据库连接对象
+
+Statement createStatement()			普通执行SQL对象
+PreparedStatement PrepareStatement(SQL)	预编译SQL的执行SQL对象，防止SQ注入
+CallableStatement prepareCall(SQL)		执行储存过程的对象
+setAutoCommit(boolean autoCommit )		开启自动提交事务：true自动提交，flas手动提交
+commit()					提交事务
+rollback()					回滚事务
+
+--------------------------------
+Statement		执行语句
+
+executeUpdate(SQL)			执行DML、DDL语句	参数:SQL语句，	返回：响应行数int
+executeQuery(SQL)			执行DQL语句	参数：SQL语句	返回：ResultSet结果集对象
+-------------------------------
+ResultSet		结果集对象
+executeQuery				执行DQL语句
+
+next					将光标从当前位置向前移动一行，判断当前行是否有效行
+返回值：boolean	true：有效行，当前行有数据	false：无效行，当前行没有数据
+-----------------------------------
+preparedStatement		预编译SQL语句：预防SQL注入	参数：SQL语句，?代表参数 如:useSSL=false
+preparedStatement预编译功能开启：userServerPrepStmts=true
+
+
+如:SQL语句中的参数值，使用?占位符代替
+String sql = "select * from user where username= ? and password = ?" ;
+//通过Connection对象获取，并传入对应的SQL语句
+PreparedStatement pstmt = conn.prepareStatement(SQL语句);
+
+设置参数值：pstmt.setXXX(参数1,参数值);
+执行SQL，不需要传递SQL语句了
+
+
+------------------------------------
+JDBC数据库快速入门操作
+Class.forName("com.mysql.jdbc.Driver");					注册驱动
+Connection conn = DriverManager.getConnection(url,username,password);	获取连接
+String sql = "update...";						定义sql语句
+Statement stmt = conn.createStatement();				获取执行SQL对象
+stmt.executeUpdate(sql);						执行SQL

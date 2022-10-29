@@ -1,0 +1,19 @@
+border 		盒子边框	-top 上面  bottom  下面  left  左边  right  右边
+border-width	定义边框粗细，单位是px
+border-style	边框样式	样式:none 没有	solid  实线边框	dashed  虚线边框	dotted  点线边框
+border-color	边框颜色
+border-collapse	属性控制表格的单元格的边框
+border-radius	属性设置元素的外边框圆角
+
+
+padding		属性定义内边距，边框与内容之间的距离	-left左边  right右边  top上面  bottom下面 
+
+margin		外边距，控制盒子和盒子之间的距离  -top 上面  bottom  下面  left  左边  right  右边  auto  水平居中
+
+
+
+
+box-shadow	属性为盒子添加阴影
+值:  h-shadow 必需。水平阴影位置，允许负值	v-shadow  必需。垂直阴影位置，允许负值
+blur  可选。模糊距离		spredd  可选。阴影尺寸	color  可选。阴影颜色	inset  可选。将外部阴影改为内部阴影
+

@@ -1,0 +1,22 @@
+head     
+
+<head></head>     HTML头标签
+
+
+title     网站标题
+
+<title>我是网站</title>
+
+meta     标签
+
+<meta>
+
+
+charset     设置字符编码
+
+<meta charset="utf-8" >
+
+字符编码常见类型: GBK 中国     uft-8 万国码
+
+
+

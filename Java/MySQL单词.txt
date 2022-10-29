@@ -1,0 +1,30 @@
+not null			非空
+unique			独特的
+primary key		主键标
+check			检查
+default			默认
+auto increment		自动递增
+foreign key		外部健
+constraint			限制约束
+references			参照
+distinct			不同的
+count			统计
+max			最大值
+min			最小值
+sum			求和
+avg			平均值
+group by			分组依据
+having			拥有
+limit			限量
+insert			插入
+into			到里面
+update			更新
+desc			降序排序
+alter			改变
+rename to			重命名为
+modify			修改
+change			替换
+drop			移除
+databases			数据库
+show			显示
+create			创建

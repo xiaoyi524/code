@@ -1,0 +1,4 @@
+font-family		设置文本字体
+font-size			设置字体大小_px
+font-weight		设置文字粗细_norma*默认值_bold*粗体_boldeer*更加粗体_lighter*更细体_inherit*继承父类字体粗细
+font-style			设置文字风格_normal*默认值_italic*斜体样式

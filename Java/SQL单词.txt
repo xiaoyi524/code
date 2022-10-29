@@ -1,0 +1,245 @@
+事务
+
+start transaction 或者 begin ;		开启事务
+commit				提交事务
+rollback				回滚事务
+---------------------------------------------------
+
+约束的分类
+not null			非空约束	保证列中所有数据不能有null值
+unique			唯一约束	保证列中所有数据各不同
+primary key		主键约束	主键是一行数据的唯一标识，要求非空且唯一
+check			检查约束	保证列中的值满足某一条件
+default			默认约束	保存数据时，未指定值则采用默认值
+auto_increment		演示自增长，当列是数字类型并且 唯一约束
+
+
+foreign key		外键约束	外键用来让两个表的数据之间建立链接，保证数据的一致性和完整性
+外键约束语法
+
+添加约束
+create table 表明（
+列名 数据类型,...
+[constraint] [外键名称] foreign key (外键列名) references 主表(主表列名)
+）;
+
+建完表后增加外键约束
+alter table 表明 add constraint 外键名称 foreign key（外键字段名称） references 主表名称（主表列名称）；
+
+删除约束
+alter table 表明 drop foreign key 外键名称;
+
+
+
+-----------------------------------------------------------
+子查询
+
+子查询语法
+select 字段列表 from 表 where 字段名 = （子查询）；		单行单列：作用条件值，使用=，!=,>，<等条件判断
+select 字段列表 from 表 where 字段名 in(子查询);		多行单列：作用条件值，使用in等关键词进行条件判断
+select 字段列表 from（子查询） where 条件；		多行多列：作用虚拟表
+------------------------------------------------------
+
+多表查询
+
+内连接查询语法
+
+select 字段列表 form 表1，表2... where 条件;		隐式内连接
+select 字段列表 form 表1 [inner] join 表2 on 条件；		显示内连接
+
+外连接查询语法
+
+select 字段列表 from 表1 left [outer] join 表2 on 条件;		左外连接
+select 字段列表 from 表1 right [outer] join 表2 no 条件;	右边连接
+--------------------------------------------------------
+DQL				查询语法
+
+
+select 字段列表 from 表名；			查询多个字段
+select * from 表名;				查询所有数据
+select distinct 字段列表 from 表名		去除重复查询
+as:as 					起别名
+
+
+select 字段列表 from 表名 where 条件列表;			条件查询语句
+
+where符号
+>		大于
+<		小于
+>=		大于等于
+<=		小于等于
+=		等于
+<>或！=		不等于
+retween...and...	在某个范围之内(都包括)
+in(...)		多选一
+like		多选一（模糊查询, _代表单个任意字符，%代表任意个数字符)
+is null		是null
+in not null		不是null
+abd或&&		并且
+or或||		或者
+not或！		非，不是
+
+
+
+select 字段列表 from 表名 order by 排序字段名1[排序方式1],...			
+排序查询语法【asc：升序排列（默认值），desc：降序排序】
+
+聚合函数
+
+select 聚合函数名（列名） from 表;		聚合函数语法：null不参与所有聚合函数运算
+
+聚合函数分类：
+count（列名）		统计数量（一般选用不为null的列）
+max（列名）		最大值
+min（列名）		最小值
+sum（列名）		求和
+avg（列名）		平均值
+
+
+
+分组查询
+select 字段列表 from 表名 [where 分组前条件限定] group by 分组字段名 [having 分组后条件过滤]
+
+
+分页查询
+select 字段列表 from 表名 limit 开始索引，查询条目数；		分页查询语法
+
+-----------------------------------------------------------------------------------------
+DML	
+
+添加数据
+insert into 表名（列名1，列名2，...）values（值1，值2，...）；		给指定列加数据
+insert into 表名 values（值1，值2，...）；				给全部列添加数据
+
+insert into 表名（列名1，列名2，...） values（值1，值2，...)....;		批量添加数据
+insert into 表名 values(值1,值2,...)...;				批量添加数据
+
+修改数据
+update 表名 set 列名1=值1，列名2=值2，...[where 条件];		修改表数据
+主要:如果不添加where语句，将会修改全部数据
+
+删除数据
+delete from 表名[where 条件];					删除数据		
+---------------------------------------------------
+DDL	操作表*****
+
+Create				创建表**
+create table 表名称(
+字段名称1 数据类型1.
+字段名称2 数据类型2.
+....
+字段名称n 数据类型n.
+);
+
+
+
+Retrieve				查询表**
+show tables;			查询当前数据库所以表名称
+desc 表名称；			查询表结构
+
+
+
+Update				修改表**
+alter table 表名 rename to 新的表名；		修改表名
+alter table 表名 add 列名 数据类型；		添加一列
+alter table 表名 modify 列名 新的数据类型；	修改数据类型
+alter table 表名 change 列名 新列名 新数据类型；	修改列名和数据类型
+alter table 表明 drop 列名；			删除列
+
+
+
+Delete				删除表**
+drop table 表明;			删除表
+drop table if exists 表名；		删除表时判断表是否存在
+
+DDL	操作数据库*****
+
+查询数据库
+show databases;				查询
+
+创建数据库
+create databases 数据库名称;			创建数据库
+create databases if not exists 数据库名称;		创建数据库（判断,如果不存在则创建）
+
+删除数据库
+drop database 数据库名称；			删除数据库
+drop database if exists 数据库名称；		删除数据集（判断，如果存在则删除）
+
+使用数据库
+select database();				查看当前使用的数据库
+use 数据库名称;				使用数据库
+
+------------------------------------------------------------------
+MySQL数据类型
+
+数值类型
+tinyint			1byte		小整数值
+smallint			2bytes		大整数值
+mediumint		3bytes		大整数值
+int或integer		4bytes		大整数值
+bigint			8bytes		极大整数值
+float			4bytes		单精度数值
+double			8bytes		双精度数值 	如:money double(总长度，小数点保留位数);
+decimal					小数值
+
+日期和时间类型
+date			3		日期值
+time			3		日期值或持续时间
+year			1		年份值
+datetime			8		混合日期和时间值
+timestamp		4		混合日期的时间值，时间戳
+
+字符串类型
+char			0-255 bytes	定长字符串
+varchar			0-65535 bytes	变长字符串
+tinyblob			0-255 bytes	不超过255个字符的二进制
+tinytext			0-255 bytes	短文本字符串
+blob			0-65 535  bytes	二进制的长文本数据
+text			0-65 535 bytes	长文本数据
+mediumblob		0-16 777 215 bytes	二进制形式的中等长度的文本数据
+mediumtext		0-16 777 215 bytes	中等长度文本数据
+longblob			0-4 294 967 295 bytes 	二进制形式的极大文本数据
+longtext			0-4 294 967 295 bytes	极大文本数据
+
+
+-------------------------------------------------------------------
+卸载MySQL
+net stop mysql
+mysqld -remove mysql
+
+
+退出MySQL服务
+exit
+quit
+
+登录MySQL服务
+mysql -uroot -p1234
+mysql -u用户名 -p密码 -h要连接的mysql服务器的ip地址(默认127.0.0.1) -P端口号(默认3306)
+
+修改MySQL服务默认密码
+mysql -u root password 1234
+
+停止MySQL服务
+net stop mysql
+
+启动MySQL服务
+net start mysql
+
+注册MySQL服务
+mysqld -install
+
+初始化MySQL，CMD启动
+mysqld --initialize-insecure
+
+
+MySQL下载地址
+downloads.mysql.com/archives/community
+
+MyQSQL配置文件，新建my.ini在MySQL安装根目录
+[mysql]
+default-character-set=utf8
+
+[mysqld]
+character-set-server=utf8
+default-storage-engine=INNODB
+sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
