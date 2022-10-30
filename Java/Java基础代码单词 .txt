@@ -2,7 +2,7 @@
 ----->  FileName:java base code words						
 ----->  CreateDate:2022/10/29 12:32 Saturday				
 ----->  Email:804433322@qq.com								
------>  GITEE:https://gitee.com/lixiaoyi147/code.git		
+----->  GITEE:https://gitee.com/xiaoyi524/code.git		
 ----->  GITHUB:https://github.com/xiaoyi524/code.git
 ----->  TheEditor:Notepad++	
 ----->	instructions:使用Notepad++全屏查看效果最佳
@@ -434,6 +434,31 @@ ThreadPoolExecutor		五个参数
 shutdownNow							立即关闭线程池
 shutdown							等待任务完成，关闭线程池
 
+【Executors线程池常用方法,静态】
+
+public static ExecutorService = newCachedThreadPool()					说明:线程数量随着任务增加而增加,如果线程任务执行完毕且空闲了一段时间则会被回收
+public static ExecutorService = newFiedThreadPool(int nThreads)				说明:创建固定线程数量,如果某个线程因为执行异常而结束,那么线程池会补充一个新线程代替它
+public static ExectuorService = newSingleThreadExecutor()					说明:创建只有一个线程的线程池对象,如果该线程出现异常而结束,那么线程池会补充一个新线程
+public static ScheduleExecutorService = new ScheduledThreadPool(int corePoolSize)		说明:创建一个线程池,可以实现给定的延迟后运行任务,或者定期执行任务
+[注意：Executors的底层其实也是基于线程池的实现类ThreadPoolExecutor的创建线程池对象的]
+
+【定时器】
+定时器的实现方式
+方式一：Timer
+方式二：ScheduledExecutorService
+
+【Timer定时器】
+Timer								Timer定时器对象
+schedule								开启一个定时器,按照计划处理TimerTask任务，参数1:TimerTask对象,参数2:long(delay),参数3[可不填]:long(period)
+注意:Timer定时器的特点和存在问题
+1、Timer是单线程，处理多个任务按照顺序执行，存在延时与设置定时器的时间有出入
+2、可能因为其中的某个任务的异常使Timer线程死掉，从而影响后续任务执行
+
+【ScheduledExecutorService定时器】
+ScheduledExecutorService						ScheduledExecutorService定时器对象
+newScheduledExecutorService					得到线程池对象,需要Executors工具类调用
+scheduleAtFixedRate						周期调度方法，参数1:Runnable对象,参数2:long,参数3:long,参数4:TimeUnit对象，返回:ScheduledFuture<?>
+
 
 
 【Stream流,对象】
@@ -506,6 +531,91 @@ error								记录日志错误，参数:String
 日志级别: TRACE<DEBUG<INGO<WARN<ERROR				默认debug，忽如大小写
 
 
+
+【Class反射】
+Class								Class类对象
+
+获取Class类对象三种方式:
+方式一：Class c1 = Class.forName("全类名");
+方式二：Class c2 = 类名.class
+方式三：Class c3 = 对象.getClass();
+
+Constructor							构造器对象
+Field								成员变量对象
+Method								方法对象
+
+
+【Constructor构造器,对象】
+Constructor							构造器对象(需要Class类对象调用)
+
+getConstructors							返回所有构造器对象数组(只能拿public的)，返回:Constructor<?>[数组]
+getDeclaredConstructors						返回所有构造器对象的数组,存在就能拿到，返回:Constructor<?>[数组]
+getConstructor							返回单个构造器对象(只能拿public的)，参数:Class<?>，返回:Constructo<T>r对象
+getDeclaredConstructor						返回单个构造器对象,存在就能拿到，参数:Class<?>，返回:Constructor<T>对象
+setAccessible							打开1次暴力反射,无视private，参数:boolean
+newInstance							创建对象，参数:object...，返回:object<T>对象
+[需要Constructor对象调用]
+
+【Field成员变量,对象】
+Field								成员变量对象(需要Class类对象调用)
+
+getFields								返回所有成员变量对象数组(只能拿public)，返回:Field[]
+getDeclaredField							返回所有成员变量对象数组,存在就能拿到，返回:Field[]
+getField								返回单个成员变量对象（只能拿public)，参数:String(Name)，返回:Field对象
+getDeclaredField							返回单个成员变量对象,存在就能拿到，参数:String(Name)，返回：Field对象
+setAccessible							打开1次暴力反射,无视private，参数:boolean
+set								给Field对象赋值，参数1:object(赋值类型),参数2:object(赋值)
+get								获取成员变量值，参数1:object(赋值类型)，返回:object
+[需要Field对象调用]
+
+【Method方法,对象】
+Method								方法对象
+
+getMethods							返回所有成员方法对象的数组(只能拿public)，返回:Method[]
+getDeclaredMethods						返回所有成员方法对象的数组,存在就能拿到，返回:Method[]
+getMethod							返回单个成员方法对象(只能拿public的)，参数1:String(方法名称),参数2:Class...<?>(方法类型)，返回:Method对象
+getDeclaredMethod						返回单个成员方法对象,存在就能拿到，参数1:String(方法名称),参数2:Class...<?>(方法类型)，返回:Method对象
+invoke								执行方法，参数1:object,参数2:object...(参数)，返回:object(如果没有返回值就不用写)
+setAccessible							打开1次暴力反射,无视private，参数:boolean
+[需要调用Method对象调用]
+
+
+【自定义注解】
+@interface							自定义注解
+
+@Target								元注解，注解注解的注解,约束自定义注解可以使用范围,使用ElementType枚举类中
+TYPE,类,接口
+FIELD,成员变量
+METHOD,成员方法
+PARAMETER,方法参数
+CONSTRUCTOR,构造器
+LOCAL_VARIABLE,局部变量
+
+@Retention							注解存活周期，定义注解的存活范围,使用RetentionPoilcy枚举类中
+SOURCE								注解只作用在源码阶段，生成的字节码文件中不存在
+CLASS								注解作用在源码阶段、字节码阶段，运行阶段不存在。默认值
+RUNTIME								注解作用在源码阶段、字节码阶段、运行阶段(开发常用）
+
+
+【注解解析相关接口】
+Annotation							注解的顶级接口,注解都是Annotation类型的接口
+AnnotatedElement							该接口定义了与注解解析相关的解析方法
+
+getDeclaredAnnotations						获得当前对象上使用的所有注解，返回:Annotation[]
+getDeclaredAnnotations						根据注解类型获得对应注解对象，参数:Class<T>，返回:<T>
+isAnnotationPresent						判断当前对象是否使用了指定注解，参数:Class<Annotation>，返回：boolean
+
+[所有类成分Class,Method,Field,Constructor,都实现了AnnotatedElement接口它们拥有解析注解的能力]
+
+
+【代理】
+Proxy						代理对象
+newProxyInstance					创建代理对象(需要Proxy调用)
+参数一:定义代理类的类加载器
+参数二:代理类要实现的接口列表
+参数三:将方法调用分派到的处理程序(代理对象的核心处理程序)
+
+
 【XML】
 
 XML解析:Dom解析
@@ -530,3 +640,28 @@ encoding			解码编号
 &amp；		&和号
 &apos；		'单引号
 &quot;		“引号
+
+
+【XML解析工具类】
+JAXP
+说明：SUN公司提供的一套XML的解析API
+
+JDOM
+说明：JDOM是一个开源项目，它基于树形结构，利用存Java的技术对XML文档实现解析、生成、序列化以及多种操作
+
+dom4j
+说明：是JDOM的升级品，用来读写XML文件的，具有性能优异、功能强大和极其易使用的特点，它的性能超过sun公司官方的dom技术，同时
+它也是一个开放源代码的项目，Hibernate也用它来读写配置文件
+
+jsoup
+说明：功能强大DOM方式的XML解析开发包，尤其对HTML解析更加方便
+
+
+【Dom4j解析】
+Dom4j						XML解析对象,需要导入jar包
+SAXReader					创建Dom4j解析对象
+read						加载XML文件成为Document对象，参数:String(XML地址)，返回:Document对象
+[需要SAXReader对象调用]
+
+Documenet					Documenet对象
+getRootElement					获取根元素对象，返回:Element对象
