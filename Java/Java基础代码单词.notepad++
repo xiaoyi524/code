@@ -148,7 +148,7 @@ String											字符串对象
 
 length											获取字符串长度，返回:int
 startsWith										判断字符串是否以指定的前缀结尾，参数1:String[前缀字符]，返回:boolean
-wndsWith										判断字符串是否以指定的后缀结尾，参数1:String[后缀字符]，返回:boolean
+endsWith										判断字符串是否以指定的后缀结尾，参数1:String[后缀字符]，返回:boolean
 equalsIgonreCase								判断两个字符串忽略大小写是否相等，参数1:String，返回:boolean
 isEmpty											判断一个字符串是否为空串，返回:boolean
 charAt											返回 char指定索引处的值，参数1:int
@@ -438,7 +438,7 @@ shutdown										等待任务完成，关闭线程池
 
 public static ExecutorService = newCachedThreadPool()									说明:线程数量随着任务增加而增加,如果线程任务执行完毕且空闲了一段时间则会被回收
 public static ExecutorService = newFiedThreadPool(int nThreads)							说明:创建固定线程数量,如果某个线程因为执行异常而结束,那么线程池会补充一个新线程代替它
-public static ExectuorService = newSingleThreadExecutor()								说明:创建只有一个线程的线程池对象,如果该线程出现异常而结束,那么线程池会补充一个新线程
+public static ExecutorService = newSingleThreadExecutor()								说明:创建只有一个线程的线程池对象,如果该线程出现异常而结束,那么线程池会补充一个新线程
 public static ScheduleExecutorService =new ScheduledThreadPool(int corePoolSize)		说明:创建一个线程池,可以实现给定的延迟后运行任务,或者定期执行任务
 [注意：Executors的底层其实也是基于线程池的实现类ThreadPoolExecutor的创建线程池对象的]
 
